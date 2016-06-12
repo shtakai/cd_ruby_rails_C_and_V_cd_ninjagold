@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="gold">
+    Your Gold: <input type="text" value="<%= session[:ninja_gold][:gold] %>">
+  </div>
+  <div class="row">
+    <div class="col-md-2 well">
+      <p class="text-center">Farm</p>
+      <p class="text-center">(earns 10 - 20 golds)</p>
+      <%= button_to 'find gold', rpg_farm_path,
+        method: :get ,class: 'btn btn-success center-block'%>
+    </div>
+
+    <div class="col-md-2 col-md-offset-1 well">
+      <p class="text-center">Cave</p>
+      <p class="text-center">(earns 5 - 10 golds)</p>
+      <%= button_to 'find gold', rpg_cave_path,
+        method: :get ,class: 'btn btn-success center-block'%>
+    </div>
+
+    <div class="col-md-2 col-md-offset-1 well">
+      <p class="text-center">Home</p>
+      <p class="text-center">(earns 2 - 5 golds)</p>
+      <%= button_to 'find gold', rpg_house_path,
+        method: :get ,class: 'btn btn-success center-block'%>
+    </div>
+
+    <div class="col-md-2 col-md-offset-1 well">
+      <p class="text-center">Casino</p>
+      <p class="text-center">(earns / takes 0 - 50 golds)</p>
+      <%= button_to 'find gold', rpg_casino_path,
+        method: :get ,class: 'btn btn-success center-block'%>
+    </div>
+  </div>
+
+  <div class="activitis">
+    <h3>Activities</h3>
+    <div class="well">
+    <ul class="list-unstyled">
+      <% session[:ninja_gold][:activities].reverse.each do |activity| %>
+        <li class="<%= activity[:class]%>">
+          <%= activity[:activity] %>
+        </li>
+      <% end %>
+    </ul>
+    </div>
+  </div>
+</div>
